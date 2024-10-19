@@ -1,35 +1,21 @@
-import developer.Developer;
 import dicontainer.DiContainer;
 import dicontainer.RegisterType;
-import services.calculations.*;
-import services.calculator.*;
+import services.bank.*;
 
 public class Main {
     public static void main(String[] args) {
         System.out.println(System.getProperty("java.version"));
         DiContainer container = new DiContainer();
+        container.Register(AccountUser.class, AccountUserService.class, RegisterType.Singleton);
+        container.Register(AccountManager.class, AccountManagerService.class, RegisterType.Singleton);
+        container.Register(Bank.class, BankService.class, RegisterType.Singleton);
 
-        Developer.DebugMessage("Starting Registration");
-        Developer.IndentDebugMessagesOnce();
-        container.Register(AdditionCalculationService.class, RegisterType.Singleton);
-        container.Register(SubtractionCalculationService.class, RegisterType.Singleton);
-        container.Register(MultiplicationCalculatorService.class, RegisterType.Singleton);
-        container.Register(DivisionCalculationService.class, RegisterType.Singleton);
-        container.Register(ExponentialCalculationService.class, RegisterType.Singleton);
-        Developer.DeindentDebugMessagesOnce();
-
-        Developer.DebugMessage("Registering Calculator");
-        Developer.IndentDebugMessagesOnce();
-        container.Register(ICalculator.class, AWorseCalculator.class, RegisterType.Singleton);
-        Developer.DeindentDebugMessagesOnce();
-
-        Developer.DebugMessage("Resolving calculator with dependencies");
-        Developer.IndentDebugMessagesOnce();
-        var calculator = container.ResolveInstance(ICalculator.class);
-        Developer.DeindentDebugMessagesOnce();
-
-        Developer.DebugMessage("Calculating...");
-        var res = calculator.Calculate(2, 3, 2);
-        System.out.println("Calculated result: " + res);
+        var bank = container.ResolveInstance(Bank.class);
+        bank.createInitialUsers();
+        bank.openBankAccountForAllUsers();
+        bank.openBankAccountForAllUsers();
+        bank.makeEveryoneRich();
+        bank.displayUserAccountStatus();
+        System.out.println(bank);
     }
 }

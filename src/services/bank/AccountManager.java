@@ -1,5 +1,7 @@
 package services.bank;
 
 public interface AccountManager {
-    void createNewBankAccount();
+    String createNewBankAccount(String userId);
+    BankAccountData[] getBankAccountsByUserId(String userId);
+    BankAccountData getBankAccountById(String accountId);
 }
