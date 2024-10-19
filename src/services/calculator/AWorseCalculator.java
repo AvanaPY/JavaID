@@ -9,8 +9,7 @@ public class AWorseCalculator implements ICalculator {
 
     public AWorseCalculator(
             AdditionCalculationService additionCalculatorService,
-            SubtractionCalculationService subtractionCalculationService
-    )
+            SubtractionCalculationService subtractionCalculationService)
     {
         this.add = additionCalculatorService;
         this.sub = subtractionCalculationService;

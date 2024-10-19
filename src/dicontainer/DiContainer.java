@@ -8,7 +8,7 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.*;
 
-public class DIContainer {
+public class DiContainer {
     /**
      * Set of all registered interfaced classes
      */
@@ -27,7 +27,7 @@ public class DIContainer {
      */
     private final Map<Class<?>, Class<?>> interfaceClassMap;
 
-    public DIContainer() {
+    public DiContainer() {
         this.classInterfaces = new HashSet<>();
         this.singletonRegisteredCache = new HashMap<>();
         this.registerTypeMap = new HashMap<>();
@@ -61,9 +61,7 @@ public class DIContainer {
             classInterfaces.add(clazz);
         }
 
-        if (SystemConstants.DEBUG) {
-            System.out.println(this + " registered <" + iclazz + ">/<" + clazz + "> as " + registerType);
-        }
+        Developer.DebugMessage(this + " registered <" + iclazz + ">/<" + clazz + "> as " + registerType);
     }
 
     /**

@@ -14,8 +14,7 @@ public class Calculator implements ICalculator {
             SubtractionCalculationService subtractionCalculationService,
             MultiplicationCalculatorService multiplicationCalculatorService,
             ExponentialCalculationService exponentialCalculatorService,
-            DivisionCalculationService divisionCalculatorService
-    ) {
+            DivisionCalculationService divisionCalculatorService) {
         this.add = additionCalculatorService;
         this.sub = subtractionCalculationService;
         this.mult = multiplicationCalculatorService;
@@ -34,5 +33,4 @@ public class Calculator implements ICalculator {
         );
         return div.Calculate(aa, ab);
     }
-
 }
